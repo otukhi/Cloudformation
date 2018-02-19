@@ -20,7 +20,7 @@
     },
 
     "SSHLocation" : {
-      "Description" : "The IP address range that can be used to SSH to the EC2 instances",
+      "Description" : "The IP address range that can be used to SSH, HTTP, HTTPS, KIBANA: 5601, ELASTICSEARCH: 9200 to the EC2 instances",
       "Type": "String",
       "MinLength": "9",
       "MaxLength": "18",
@@ -182,9 +182,13 @@
     "InstanceSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
-        "GroupDescription" : "Enable SSH access",
+        "GroupDescription" : "Enable SSH, HTTP, HTTPS, KIBANA: PORT 5601, ELASTICSEARCH: PORT 9200 access",
         "SecurityGroupIngress" : 
-          [ { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"} }]
+          [ { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"} }],
+		  [ { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : { "Ref" : "SSHLocation"} }],
+		  [ { "IpProtocol" : "tcp", "FromPort" : "443", "ToPort" : "443", "CidrIp" : { "Ref" : "SSHLocation"} }],
+		  [ { "IpProtocol" : "tcp", "FromPort" : "5601", "ToPort" : "4601", "CidrIp" : { "Ref" : "SSHLocation"} }],
+		  [ { "IpProtocol" : "tcp", "FromPort" : "9200", "ToPort" : "9200", "CidrIp" : { "Ref" : "SSHLocation"} }],
       }
     },
 
