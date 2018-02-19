@@ -215,11 +215,8 @@
   "Properties": {
     "IamInstanceProfile": { 
       "Ref": "S3-Role"
-    },           
-    // ...
-  },
-  // ...
 },
+
   "Outputs" : {
     "InstanceId" : {
       "Description" : "InstanceId of the newly created EC2 instance",
