@@ -204,13 +204,7 @@
       }
     }
   },
-  "S3-Role": {
-  "Type": "AWS::IAM::InstanceProfile",
-  "Properties": {
-    "Path": "/",
-    "Roles": ["s3_elk_install_ogstash_config_file"]
-			}
-	},
+ 
 
 
   "Outputs" : {
