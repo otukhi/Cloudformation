@@ -209,13 +209,14 @@
   "Properties": {
     "Path": "/",
     "Roles": ["s3_elk_install_ogstash_config_file"]
-  }
-},
+			}
+	},
   "LaunchConfig": {                                                                    
   "Properties": {
     "IamInstanceProfile": { 
-      "Ref": "S3-Role"
-},
+      "Ref": "S3-Role" }
+	  }
+	},
 
   "Outputs" : {
     "InstanceId" : {
@@ -227,4 +228,5 @@
       "Value" : { "Ref" : "IPAddress" }
     }
   }
+
 }
