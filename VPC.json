@@ -194,13 +194,13 @@
 			}
 		},
 		
-				"mySubnet" : {
-         "Type" : "AWS::EC2::Subnet",
-         "Properties" : {
-            "VpcId" : { "Ref" : "ReanVPC" },
-            "CidrBlock" : "10.0.0.0/24",
-            "AvailabilityZone" : "us-east-1a",
-            "Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet" } ]
+		"mySubnet" : {
+			"Type" : "AWS::EC2::Subnet",
+			"Properties" : {
+				"VpcId" : { "Ref" : "ReanVPC" },
+				"CidrBlock" : "10.0.0.0/24",
+				"AvailabilityZone" : "us-east-1a",
+				"Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet" } ]
          }
       },
 		
@@ -223,6 +223,7 @@
 				"KeyName" : { "Ref" : "KeyName" },
 				"ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] }
+						  
       }
     },
 
@@ -230,6 +231,7 @@
 			"Type" : "AWS::EC2::SecurityGroup",
 			"Properties" : {
 				"GroupDescription" : "Enable SSH, HTTP, HTTPS access",
+				"VpcId" : {"Ref" : "ReanVPC"},
 				"SecurityGroupIngress" : 
 					[ { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"} },
 					{ "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : { "Ref" : "SSHLocation"} },
