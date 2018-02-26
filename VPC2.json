@@ -487,9 +487,9 @@
 			"Value" : { "Ref" : "IPAddress" }
     },
 	
-	"InstanceIPAddress2" : {
-			"Description" : "IP address of the newly created EC2 instance",
-			"Value" : { "Fn::GetAtt" : ["mySubnet2", "MapPublicIpOnLaunch"]}
+	"InstanceUserData" : {
+			"Description" : "Jenkins-Server User Data",
+			"Value" : { "Fn::GetAtt" : ["ReanEC2Instance", "UserData"]}
     }
   }
 
