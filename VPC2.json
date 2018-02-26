@@ -231,14 +231,22 @@
 			"Properties" : {
 				"RouteTableId" : { "Ref" : "RouteTable" },
 				"DestinationCidrBlock" : "0.0.0.0/0",
-				"GatewayId" : { "Ref" : "InternetGateway" }
+				"GatewayId" : { "Ref" : "ReanInternetGateway" }
       }
     },
 	
-	    "SubnetRouteTableAssociation" : {
+	    "SubnetRouteTableAssociation1" : {
 			"Type" : "AWS::EC2::SubnetRouteTableAssociation",
 			"Properties" : {
 			"SubnetId" : { "Ref" : "mySubnet1" },
+			"RouteTableId" : { "Ref" : "RouteTable" }
+      }
+    },
+	
+		"SubnetRouteTableAssociation2" : {
+			"Type" : "AWS::EC2::SubnetRouteTableAssociation",
+			"Properties" : {
+			"SubnetId" : { "Ref" : "mySubnet2" },
 			"RouteTableId" : { "Ref" : "RouteTable" }
       }
     },
