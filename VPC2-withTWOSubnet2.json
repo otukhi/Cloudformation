@@ -170,7 +170,7 @@
 			"Type" : "AWS::EC2::VPC",
 			"Properties" : {
 				"CidrBlock" : "10.0.0.0/16",
-				"Tags" : [ {"Key" : "Name", "Value" : "Rean-VPC"} ]
+				"Tags" : [ {"Key" : "Name", "Value" : "Rean-VPC-OT"} ]
 			}
 		},
    
@@ -201,7 +201,7 @@
 				"VpcId" : { "Ref" : "ReanVPC" },
 				"CidrBlock" : "10.0.0.0/24",
 				"AvailabilityZone" : "us-east-1a",
-				"Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet1" } ]
+				"Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet1-OT" } ]
          }
       },
 	  
@@ -211,7 +211,7 @@
 				"VpcId" : { "Ref" : "ReanVPC" },
 				"CidrBlock" : "10.0.1.0/24",
 				"AvailabilityZone" : "us-east-1b",
-				"Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet2" } ]
+				"Tags" : [ { "Key" : "Name", "Value" : "PublicSubnet2-OT" } ]
          }
       },
 		
@@ -375,7 +375,7 @@
 				"Properties" : {
 					"GroupDescription" : "Enable SSH, HTTP, HTTPS access",
 					"VpcId" : { "Ref" : "ReanVPC" },
-					"Tags" : [ {"Key" : "Name", "Value" : "Rean-SecurityGroup"}],
+					"Tags" : [ {"Key" : "Name", "Value" : "Rean-SecurityGroup-OT"}],
 					"SecurityGroupIngress" : 
 						[ { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"} },
 						{ "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : { "Ref" : "SSHLocation"} },
@@ -388,7 +388,7 @@
 		"ReanEC2Instance" : {
 			"Type" : "AWS::EC2::Instance",
 			"Properties" : {
-				"Tags" : [ {"Key" : "Name", "Value" : "Rean-Jenkins-Server"}],
+				"Tags" : [ {"Key" : "Name", "Value" : "Rean-Jenkins-Server-OT"}],
 				"NetworkInterfaces" : [{
 					"GroupSet"                 : [{ "Ref" : "InstanceSecurityGroup" }],
 					"AssociatePublicIpAddress" : "true",
@@ -427,7 +427,7 @@
 	"ReanEC2Instance2" : {
 			"Type" : "AWS::EC2::Instance",
 			"Properties" : {
-				"Tags" : [ {"Key" : "Name", "Value" : "Wordpress-Server"}],
+				"Tags" : [ {"Key" : "Name", "Value" : "Wordpress-Server-OT"}],
 				"NetworkInterfaces" : [{
 					"GroupSet"                 : [{ "Ref" : "InstanceSecurityGroup" }],
 					"AssociatePublicIpAddress" : "true",
